@@ -1,10 +1,10 @@
-name: 'Create .env file'
-description: 'Github Action to create a .env file with Github Secrets'
-author: 'Forest Anderson'
-inputs:
-  file_name:
-    description: 'The filename for the envfile'
-    default: '.env'
-runs:
-  using: 'python3'
-  main: 'src/create-envfile.py'
+  name: 'Create .env file'
+  description: 'Github Action to create a .env file with Github Secrets'
+  author: 'Forest Anderson'
+  inputs:
+    file_name:
+      description: 'The filename for the envfile'
+      default: '.env'
+  runs:
+    using: 'docker'
+    image: 'Dockerfile'
