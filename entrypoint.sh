@@ -1,3 +1,3 @@
 #!/bin/sh -l
 
-env
+python3 create-envfile.py
