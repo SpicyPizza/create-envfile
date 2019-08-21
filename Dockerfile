@@ -7,4 +7,3 @@ COPY src/create-envfile.py /create-envfile.py
 RUN apk add python3
 
 ENTRYPOINT ["/entrypoint.sh"]
-
