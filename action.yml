@@ -1,6 +1,9 @@
   name: 'Create .env file'
   description: 'Github Action to create a .env file with Github Secrets'
   author: 'Forest Anderson'
+  branding:
+    icon: 'briefcase'
+    color: 'gray-dark'
   inputs:
     file_name:
       description: 'The filename for the envfile'
