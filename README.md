@@ -1,6 +1,6 @@
 # Create Envfile Github Action
 
-**Name: SpicyPizza/create-envfile@master**
+**Name: SpicyPizza/create-envfile@v1**
 
 Github Action to create a .env file with Github Secrets
 
@@ -21,13 +21,13 @@ jobs:
  
     steps:
     - name: Make envfile
-      uses: SpicyPizza/create-envfile@master
+      uses: SpicyPizza/create-envfile@v1
       with:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
         envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
         some_other_variable: foobar
-        DIRECTORY: <directory_name>
+        directory: <directory_name>
         file_name: .env
 ```
 
@@ -39,6 +39,6 @@ In this example, there are 6 keys:
 
 `some_other_variable` - Won't be used because it doesn't start with `envkey_`
 
-`DIRECTORY`(**Optional**) - This key will set your specified directory in which you wan't to create `env` file. (**Action will fail if specified directory doesn't exists.**)
+`directory`(**Optional**) - This key will set the directory in which you want to create `env` file. (**Action will fail if the specified directory doesn't exist.**)
 
 `file_name`(**Optional**) - Set the name of the output envfile. Defaults to `.env`
