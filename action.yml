@@ -8,6 +8,9 @@
     file_name:
       description: 'The filename for the envfile'
       default: '.env'
+    directory:
+      description: 'The directory to put the envfile in'
+      default: ''
   runs:
     using: 'docker'
     image: 'Dockerfile'

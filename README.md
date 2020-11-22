@@ -27,10 +27,11 @@ jobs:
         envkey_SOME_API_KEY: "123456abcdef"
         envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
         some_other_variable: foobar
+        directory: <directory_name>
         file_name: .env
 ```
 
-In this example, there are 4 keys:
+In this example, there are 6 keys:
 
 `envkey_DEBUG`, `envkey_SOME_API_KEY` - String values
 
@@ -38,4 +39,6 @@ In this example, there are 4 keys:
 
 `some_other_variable` - Won't be used because it doesn't start with `envkey_`
 
-`file_name` - **Optional**. Set the name of the output envfile. Defaults to `.env`
+`directory`(**Optional**) - This key will set the directory in which you want to create `env` file. (**Action will fail if the specified directory doesn't exist.**)
+
+`file_name`(**Optional**) - Set the name of the output envfile. Defaults to `.env`
