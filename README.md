@@ -8,7 +8,7 @@ Github Action to create a .env file with Github Secrets
 
 The action looks for environment variables that start with `INPUT_ENVKEY_` and creates an envfile with them. To add a key to the envfile, add a key/pair to the `with:` section. It must begin with `envkey_`.
 
-```
+```yml
 name: Create envfile
 
 on: [push]
