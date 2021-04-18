@@ -3,7 +3,7 @@ import os
 # Construct dotenv file contents
 env_keys = dict(os.environ).keys()
 keys_to_set = filter(lambda key: key.startswith("INPUT_ENVKEY_"), env_keys)
-output_lines = map(lambda key: f'{key.split("INPUT_ENVKEY_")[1]}={os.environ.get(key)}\n', keys_to_set)
+output_lines = map(lambda key: f'{key.split("INPUT_ENVKEY_")[1]}={os.environ.get(key)}', keys_to_set)
 file_content = '\n'.join(output_lines)
 
 # Construct filepath to write to
