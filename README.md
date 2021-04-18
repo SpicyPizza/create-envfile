@@ -1,12 +1,12 @@
-# Create Envfile Github Action
+# Create Dotenv File Github Action
 
-**Name: SpicyPizza/create-envfile@v1**
+**Name: actually-colab/github-action-create-env-file@v1**
 
-Github Action to create a .env file with Github Secrets
+Github Action to create a dotenv file
 
 ## Usage
 
-The action looks for environment variables that start with `INPUT_ENVKEY_` and creates an envfile with them. To add a key to the envfile, add a key/pair to the `with:` section. It must begin with `envkey_`.
+The action looks for environment variables that start with `INPUT_ENVKEY_` and creates an envfile with them. To add a key to the envfile, add a key/pair to the `with:` section. It must begin with `ENVKEY`.
 
 ```yml
 name: Create envfile
@@ -21,12 +21,13 @@ jobs:
  
     steps:
     - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1
+      uses: actually-colab/github-action-create-env-file@v1
       with:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
         envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
         some_other_variable: foobar
+
         directory: <directory_name>
         file_name: .env
 ```

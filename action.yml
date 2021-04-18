@@ -1,16 +1,18 @@
-  name: 'Create .env file'
-  description: 'Github Action to create a .env file with Github Secrets'
-  author: 'Forest Anderson'
+  name: 'Create Dotenv File'
+  description: 'Github Action to create a dotenv file'
+  author: 'Bailey Tincher'
   branding:
     icon: 'briefcase'
     color: 'gray-dark'
   inputs:
     file_name:
-      description: 'The filename for the envfile'
+      description: 'Filename to write dotenv file to'
       default: '.env'
+      required: false
     directory:
-      description: 'The directory to put the envfile in'
-      default: ''
+      description: 'Directory to write the dotenv file in'
+      default: '.'
+      required: false
   runs:
     using: 'docker'
     image: 'Dockerfile'
