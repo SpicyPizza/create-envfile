@@ -7,7 +7,7 @@ output_lines = map(lambda key: f'{key.split("INPUT_ENVKEY_")[1]}={os.environ.get
 file_content = '\n'.join(output_lines)
 
 # Construct filepath to write to
-action_working_dir = os.environ.get("INPUT_GITHUB_WORKSPACE")
+action_working_dir = os.environ.get("GITHUB_WORKSPACE")
 if not action_working_dir:
     raise Exception("Could not get the GITHUB_WORKSPACE environment variable.")
 

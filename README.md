@@ -1,6 +1,6 @@
 # Create Dotenv File Github Action
 
-**Name: actually-colab/github-action-create-env-file@v1**
+**Name: actually-colab/github-action-create-env-file@v2.1**
 
 Github Action to create a dotenv file
 
@@ -21,7 +21,7 @@ jobs:
  
     steps:
     - name: Make envfile
-      uses: actually-colab/github-action-create-env-file@v1
+      uses: actually-colab/github-action-create-env-file@v2.1
       with:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
