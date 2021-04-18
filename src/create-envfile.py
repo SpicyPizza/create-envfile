@@ -15,7 +15,9 @@ directory = str(os.environ.get("INPUT_DIRECTORY"))
 # .env is set by default
 file_name = str(os.environ.get("INPUT_FILE_NAME"))
 
-path = "/github/workspace"
+path = str(os.environ.get("INPUT_GITHUB_WORKSPACE"))
+if path == "":
+    raise Exception("Could not get the GITHUB_WORKSPACE environment variable.") 
 
 with open(os.path.join(path, directory, file_name), "w") as text_file:
     text_file.write(out_file)
