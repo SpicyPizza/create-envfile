@@ -1,7 +1,5 @@
 # Create Dotenv File Github Action
 
-**Name: actually-colab/github-action-create-env-file@v2.1**
-
 Github Action to create a dotenv file
 
 ## Usage
@@ -9,28 +7,15 @@ Github Action to create a dotenv file
 The action looks for environment variables that start with `INPUT_ENVKEY_` and creates an envfile with them. To add a key to the envfile, add a key/pair to the `with:` section. It must begin with `ENVKEY`.
 
 ```yml
-name: Create envfile
+with:
+  envkey_DEBUG: false
+  envkey_SOME_API_KEY: "123456abcdef"
+  envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
-on: [push]
+  some_other_variable: foobar # Won't be used
 
-jobs:
-
-  create-envfile:
- 
-    runs-on: ubuntu-18.04
- 
-    steps:
-    - name: Make envfile
-      uses: actually-colab/github-action-create-env-file@v2.1
-      with:
-        envkey_DEBUG: false
-        envkey_SOME_API_KEY: "123456abcdef"
-        envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
-
-        some_other_variable: foobar # Won't be used
-
-        directory: <directory_name>
-        file_name: .env
+  directory: <directory_name>
+  file_name: .env
 ```
 
 In this example, there are 6 keys:
