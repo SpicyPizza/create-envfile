@@ -52,7 +52,7 @@ the envfile:
 | Name                                  | Description                                                                                                                          |
 |---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | `envkey_DEBUG`, `envkey_SOME_API_KEY` | These values can be whatever, and they will be added to the envfile as  `DEBUG`  and  `SOME_API_KEY` .                               |
-| `envkey_SOME_API_KEY`                 | This one will use a secret stored in the repository's Github Secrets, and add it to the file as  `SECRET_KEY`                        |
+| `envkey_SECRET_KEY`                 | This one will use a secret stored in the repository's Github Secrets, and add it to the file as  `SECRET_KEY`                        |
 | `directory` (**Optional**)            | This key will set the directory in which you want to create `env` file. (Action will fail if the specified directory doesn't exist.) |
 | `file_name` (**Optional**)            | Set the name of the output envfile. Defaults to `.env`                                                                               |
 
