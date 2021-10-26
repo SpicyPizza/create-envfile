@@ -6,7 +6,7 @@ release](https://img.shields.io/github/release/SpicyPizza/create-envfile.svg?sty
 marketplace](https://img.shields.io/badge/marketplace-create--env--file-blue?logo=github&style=flat-square)](https://github.com/marketplace/actions/create-env-file)
 [![Licence](https://img.shields.io/github/license/SpicyPizza/create-envfile)](https://github.com/SpicyPizza/create-envfile/blob/master/LICENSE)
 
-### SpicyPizza/create-envfile@v1.1
+### SpicyPizza/create-envfile@v1.2
 
 ## About
 
