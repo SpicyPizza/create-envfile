@@ -6,7 +6,13 @@ release](https://img.shields.io/github/release/SpicyPizza/create-envfile.svg?sty
 marketplace](https://img.shields.io/badge/marketplace-create--env--file-blue?logo=github&style=flat-square)](https://github.com/marketplace/actions/create-env-file)
 [![Licence](https://img.shields.io/github/license/SpicyPizza/create-envfile)](https://github.com/SpicyPizza/create-envfile/blob/master/LICENSE)
 
-### SpicyPizza/create-envfile@v1.2
+## Versions
+
+Please use this version of your action config file:
+
+* `SpicyPizza/create-envfile@master`
+
+* `SpicyPizza/create-envfile@v1.2`
 
 ## About
 
@@ -24,17 +30,17 @@ config. Here is an example of it in use:
 ```yml
 name: Create envfile
 
-on: [push]
+on: [ push ]
 
 jobs:
 
   create-envfile:
  
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
  
     steps:
     - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1
+      uses: SpicyPizza/create-envfile@master
       with:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
@@ -53,16 +59,16 @@ the envfile:
 |---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | `envkey_DEBUG`, `envkey_SOME_API_KEY` | These values can be whatever, and they will be added to the envfile as  `DEBUG`  and  `SOME_API_KEY` .                               |
 | `envkey_SECRET_KEY`                 | This one will use a secret stored in the repository's Github Secrets, and add it to the file as  `SECRET_KEY`                        |
-| `directory` (**Optional**)            | This key will set the directory in which you want to create `env` file. (Action will fail if the specified directory doesn't exist.) |
+| `directory` (**Optional**)            | This key will set the directory in which you want to create `env` file. **Important: cannot start with `/`** (Action will fail if the specified directory doesn't exist.) |
 | `file_name` (**Optional**)            | Set the name of the output envfile. Defaults to `.env`                                                                               |
 
 Assuming that the Github Secret that was used is `password123`, the .env file
 that is created from the config above would contain:
 
 ```
-DEBUG: false
-SOME_API_KEY: "123456abcdef"
-SECRET_KEY: password123
+DEBUG=false
+SOME_API_KEY="123456abcdef"
+SECRET_KEY=password123
 ```
 
 ## Potential Issues

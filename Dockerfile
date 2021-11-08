@@ -1,9 +1,9 @@
-FROM alpine:3.10
+FROM python:latest
 
-COPY LICENSE README.md entrypoint.sh /
+WORKDIR /opt/action
 
-COPY src/create-envfile.py /create-envfile.py
+COPY LICENSE README.md ./
 
-RUN apk add python3
+COPY src/create-envfile.py ./create-envfile.py
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./opt/action/create-envfile.py"]
