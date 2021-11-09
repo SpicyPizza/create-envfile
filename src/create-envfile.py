@@ -24,4 +24,3 @@ if path in ["", "None"]:
 
 with open(os.path.join(path, directory, file_name), "w") as text_file:
     text_file.write(out_file)
-
