@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python
 import os
 
 env_keys = list(dict(os.environ).keys())

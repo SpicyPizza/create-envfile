@@ -6,14 +6,6 @@ release](https://img.shields.io/github/release/SpicyPizza/create-envfile.svg?sty
 marketplace](https://img.shields.io/badge/marketplace-create--env--file-blue?logo=github&style=flat-square)](https://github.com/marketplace/actions/create-env-file)
 [![Licence](https://img.shields.io/github/license/SpicyPizza/create-envfile)](https://github.com/SpicyPizza/create-envfile/blob/master/LICENSE)
 
-## Versions
-
-Please use this version of your action config file:
-
-* `SpicyPizza/create-envfile@master`
-
-* `SpicyPizza/create-envfile@v1.2`
-
 ## About
 
 A Github Action to create a .env file with Github Secrets. This is useful when
@@ -40,7 +32,7 @@ jobs:
  
     steps:
     - name: Make envfile
-      uses: SpicyPizza/create-envfile@master
+      uses: SpicyPizza/create-envfile@v1.2
       with:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
@@ -59,7 +51,7 @@ the envfile:
 |---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | `envkey_DEBUG`, `envkey_SOME_API_KEY` | These values can be whatever, and they will be added to the envfile as  `DEBUG`  and  `SOME_API_KEY` .                               |
 | `envkey_SECRET_KEY`                 | This one will use a secret stored in the repository's Github Secrets, and add it to the file as  `SECRET_KEY`                        |
-| `directory` (**Optional**)            | This key will set the directory in which you want to create `env` file. **Important: cannot start with `/`** (Action will fail if the specified directory doesn't exist.) |
+| `directory` (**Optional**)            | This key will set the directory in which you want to create `env` file. **Important: cannot start with `/`. Action will fail if the specified directory doesn't exist.** |
 | `file_name` (**Optional**)            | Set the name of the output envfile. Defaults to `.env`                                                                               |
 
 Assuming that the Github Secret that was used is `password123`, the .env file
