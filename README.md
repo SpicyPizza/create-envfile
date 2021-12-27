@@ -9,7 +9,7 @@ marketplace](https://img.shields.io/badge/marketplace-create--env--file-blue?log
 ## About
 
 A Github Action to create an '.env' file with Github Secrets. This is useful when
-you are creating artifacts that need to contain secrets stored in Github
+you are creating artifacts that contain values stored in Github
 Secrets. This creates a file with variables that are defined in the Action
 config.
 
