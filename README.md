@@ -34,7 +34,7 @@ jobs:
  
     steps:
     - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1
+      uses: SpicyPizza/create-envfile@v1.2
       with:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
