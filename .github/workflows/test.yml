@@ -1,0 +1,13 @@
+name: Test action
+
+on:
+  push:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Make envfile
+      uses: SpicyPizza/create-envfile@${{ github.sha }}
