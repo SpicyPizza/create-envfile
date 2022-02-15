@@ -23,7 +23,10 @@ jobs:
     - name: Verify envfile
       run: |
         python --version
-        ls
-        ls /github
-        ls /github/workspace
+        ls -al
+        echo "----"
+        ls -al /github
+        echo "----"
+        ls -al /github/workspace
+        echo "----"
         cat /github/workspace/.env
