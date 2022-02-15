@@ -23,6 +23,9 @@ jobs:
     - name: Verify envfile
       run: |
         python --version
+        echo "----"
+        pwd
+        echo "----"
         ls -al
         echo "----"
         ls -al /github
