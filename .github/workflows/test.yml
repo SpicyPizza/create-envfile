@@ -136,3 +136,37 @@ jobs:
         then
             echo "ERR"
         fi
+
+  should-fail-test-absolute-path:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create folder
+      run: |
+        mkdir -p subdir
+
+    - name: Make envfile
+      uses: ./
+      with:
+        envkey_DEBUG: false
+        directory: /home
+
+
+  should-fail-test-bad-secret:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create folder
+      run: |
+        mkdir -p subdir
+
+    - name: Make envfile
+      uses: ./
+      with:
+        envkey_SECRET_KEY: ${{ secrets.NON_EXISTENT_SECRET }}

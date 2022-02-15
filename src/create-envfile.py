@@ -8,7 +8,13 @@ out_file = ""
 # Make sure the env keys are sorted to have reproducible output
 for key in sorted(env_keys):
     if key.startswith("INPUT_ENVKEY_"):
-        out_file += "{}={}\n".format(key.split("INPUT_ENVKEY_")[1], os.getenv(key))
+        value = os.getenv(key, "")
+
+        # If the key is empty, throw an error.
+        if value == "":
+            raise Exception(f"Empty env key found: {value}")
+
+        out_file += "{}={}\n".format(key.split("INPUT_ENVKEY_")[1], value)
 
 # get directory name in which we want to create .env file
 directory = str(os.getenv("INPUT_DIRECTORY", ""))
