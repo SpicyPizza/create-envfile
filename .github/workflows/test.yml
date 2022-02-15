@@ -16,16 +16,19 @@ jobs:
       with:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
-        # envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
         some_other_variable: foobar
         file_name: .env
 
     - name: Verify envfile
       run: |
-        cat .env
-        # TEST="DEBUG=false\nSECRET_KEY=***\nSOME_API_KEY=123456abcdef\n"
-        TEST="DEBUG=false\nSOME_API_KEY=123456abcdef"
+        TEST=$(cat <<-END
+        DEBUG=false
+        SECRET_KEY=password123
+        SOME_API_KEY=123456abcdef
+        END
+        )
         if [ "$TEST" != "$(cat .env)" ]
         then
-            exit 1
+            echo "ERR"
         fi
