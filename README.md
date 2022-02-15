@@ -47,17 +47,17 @@ jobs:
 In the example above, there are several key/value pairs that will be added to
 the envfile:
 
-| Name                                  | Description                                                                                                                          |
-|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| `envkey_DEBUG`, `envkey_SOME_API_KEY` | These values can be whatever, and they will be added to the envfile as  `DEBUG`  and  `SOME_API_KEY` .                               |
-| `envkey_SECRET_KEY`                 | This one will use a secret stored in the repository's Github Secrets, and add it to the file as  `SECRET_KEY`                        |
+| Name                                  | Description                                                                                                                                                              |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `envkey_DEBUG`, `envkey_SOME_API_KEY` | These values can be whatever, and they will be added to the envfile as `DEBUG` and `SOME_API_KEY` .                                                                      |
+| `envkey_SECRET_KEY`                   | This one will use a secret stored in the repository's Github Secrets, and add it to the file as  `SECRET_KEY`                                                            |
 | `directory` (**Optional**)            | This key will set the directory in which you want to create `env` file. **Important: cannot start with `/`. Action will fail if the specified directory doesn't exist.** |
-| `file_name` (**Optional**)            | Set the name of the output envfile. Defaults to `.env`                                                                               |
+| `file_name` (**Optional**)            | Set the name of the output envfile. Defaults to `.env`                                                                                                                   |
 
 Assuming that the Github Secret that was used is `password123`, the .env file
 that is created from the config above would contain:
 
-```
+```text
 DEBUG=false
 SOME_API_KEY="123456abcdef"
 SECRET_KEY=password123
