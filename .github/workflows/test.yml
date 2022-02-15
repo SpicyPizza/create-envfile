@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  build:
+  test-general:
 
     runs-on: ubuntu-latest
 
@@ -29,6 +29,110 @@ jobs:
         END
         )
         if [ "$TEST" != "$(cat .env)" ]
+        then
+            echo "ERR"
+        fi
+
+  test-filename:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Make envfile
+      uses: ./
+      with:
+        envkey_DEBUG: false
+        file_name: .other-file
+
+    - name: Verify envfile
+      run: |
+        TEST=$(cat <<-END
+          DEBUG=false
+        END
+        )
+        if [ "$TEST" != "$(cat .other-file)" ]
+        then
+            echo "ERR"
+        fi
+
+  test-relative-path-above:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Make envfile
+      uses: ./
+      with:
+        envkey_DEBUG: false
+        directory: ../
+
+    - name: Verify envfile
+      run: |
+        TEST=$(cat <<-END
+          DEBUG=false
+        END
+        )
+        if [ "$TEST" != "$(cat ../.env)" ]
+        then
+            echo "ERR"
+        fi
+
+  test-relative-path-subdirectory-1:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create folder
+      run: |
+        mkdir -p subdir
+
+    - name: Make envfile
+      uses: ./
+      with:
+        envkey_DEBUG: false
+        directory: subdir
+
+    - name: Verify envfile
+      run: |
+        TEST=$(cat <<-END
+          DEBUG=false
+        END
+        )
+        if [ "$TEST" != "$(cat subdir/.env)" ]
+        then
+            echo "ERR"
+        fi
+
+  test-relative-path-subdirectory-2:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create folder
+      run: |
+        mkdir -p subdir
+
+    - name: Make envfile
+      uses: ./
+      with:
+        envkey_DEBUG: false
+        directory: ./subdir
+
+    - name: Verify envfile
+      run: |
+        TEST=$(cat <<-END
+          DEBUG=false
+        END
+        )
+        if [ "$TEST" != "$(cat subdir/.env)" ]
         then
             echo "ERR"
         fi
