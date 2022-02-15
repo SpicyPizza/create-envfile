@@ -12,7 +12,7 @@ for key in sorted(env_keys):
 
         # If the key is empty, throw an error.
         if value == "":
-            raise Exception(f"Empty env key found: {value}")
+            raise Exception(f"Empty env key found: {key}")
 
         out_file += "{}={}\n".format(key.split("INPUT_ENVKEY_")[1], value)
 
