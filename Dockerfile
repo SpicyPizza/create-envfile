@@ -1,9 +1,7 @@
-FROM python:3.9
+FROM python:3.10-alpine
 
 WORKDIR /opt/action
 
-COPY LICENSE README.md ./
-
-COPY src/create-envfile.py ./create-envfile.py
+COPY LICENSE README.md src/create-envfile.py ./
 
 ENTRYPOINT ["./create-envfile.py"]
