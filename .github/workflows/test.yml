@@ -21,4 +21,9 @@ jobs:
         file_name: .env
 
     - name: Verify envfile
-      run: find / | grep env; cat /github/workspace/.env
+      run: |
+        python --version
+        ls
+        ls /github
+        ls /github/workspace
+        cat /github/workspace/.env

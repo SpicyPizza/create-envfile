@@ -32,5 +32,7 @@ elif directory.startswith("./"):
 else:
     full_path = os.path.join(path, directory, file_name)
 
+print("Creating file: {}".format(full_path))
+
 with open(full_path, "w") as text_file:
     text_file.write(out_file)
