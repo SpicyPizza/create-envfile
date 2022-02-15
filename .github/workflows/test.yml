@@ -21,5 +21,4 @@ jobs:
         file_name: .env
 
     - name: Verify envfile
-      run: cat /github/workspace/.env
-      
+      run: find / | grep env; cat /github/workspace/.env
