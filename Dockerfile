@@ -4,4 +4,4 @@ WORKDIR /opt/action
 
 COPY LICENSE README.md src/create-envfile.py ./
 
-ENTRYPOINT ["./create-envfile.py"]
+ENTRYPOINT ["/opt/action/create-envfile.py"]
