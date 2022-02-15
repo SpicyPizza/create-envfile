@@ -24,7 +24,7 @@ jobs:
       run: |
         cat .env
         # TEST="DEBUG=false\nSECRET_KEY=***\nSOME_API_KEY=123456abcdef\n"
-        TEST="DEBUG=false\n"
+        TEST="DEBUG=false"
         if [ "$TEST" != "$(cat .env)" ]
         then
             exit 1
