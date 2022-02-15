@@ -5,7 +5,8 @@ env_keys = list(dict(os.environ).keys())
 
 out_file = ""
 
-for key in env_keys:
+# Make sure the env keys are sorted to have reproducible output
+for key in sorted(env_keys):
     if key.startswith("INPUT_ENVKEY_"):
         out_file += "{}={}\n".format(key.split("INPUT_ENVKEY_")[1], os.getenv(key))
 
@@ -25,7 +26,10 @@ if path in ["", "None"]:
 if directory == "":
     full_path = os.path.join(path, file_name)
 elif directory.startswith("/"):
-    full_path = os.path.join(directory, file_name)
+    # Throw an error saying that absolute paths are not allowed. This is because
+    # we're in a Docker container, and an absolute path would lead us out of the
+    # mounted directory.
+    raise Exception("Absolute paths are not allowed. Please use a relative path.")
 elif directory.startswith("./"):
     full_path = os.path.join(path, directory[2:], file_name)
 # Any other case should just be a relative path
