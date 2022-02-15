@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Make envfile
       uses: ./
       with:
@@ -18,5 +18,8 @@ jobs:
         envkey_SOME_API_KEY: "123456abcdef"
         envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
         some_other_variable: foobar
-        directory: <directory_name>
         file_name: .env
+
+    - name: Verify envfile
+      run: cat /github/workspace/.env
+      
