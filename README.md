@@ -4,7 +4,7 @@
 release](https://img.shields.io/github/release/SpicyPizza/create-envfile.svg?style=flat-square)](https://github.com/SpicyPizza/create-envfile/releases/latest)
 [![GitHub
 marketplace](https://img.shields.io/badge/marketplace-create--env--file-blue?logo=github&style=flat-square)](https://github.com/marketplace/actions/create-env-file)
-[![Licence](https://img.shields.io/github/license/SpicyPizza/create-envfile)](https://github.com/SpicyPizza/create-envfile/blob/master/LICENSE)
+[![Licence](https://img.shields.io/github/license/SpicyPizza/create-envfile)](https://github.com/SpicyPizza/create-envfile/blob/main/LICENSE)
 
 ## About
 
@@ -31,7 +31,7 @@ jobs:
  
     steps:
     - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1.2
+      uses: SpicyPizza/create-envfile@v1.3
       with:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
