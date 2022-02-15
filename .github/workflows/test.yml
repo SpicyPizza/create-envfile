@@ -22,4 +22,8 @@ jobs:
 
     - name: Verify envfile
       run: |
-        cat .env
+        test = "SOME_API_KEY=123456abcdef\nSECRET_KEY=password123\nDEBUG=false"
+        if [ "$test" != "$(cat .env)" ]\
+        then
+            exit 1
+        fi
