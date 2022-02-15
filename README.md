@@ -1,4 +1,4 @@
-# Create Envfile Github Action
+# Create .Env File Github Action
 
 [![GitHub
 release](https://img.shields.io/github/release/SpicyPizza/create-envfile.svg?style=flat-square)](https://github.com/SpicyPizza/create-envfile/releases/latest)
@@ -8,15 +8,14 @@ marketplace](https://img.shields.io/badge/marketplace-create--env--file-blue?log
 
 ## About
 
-A Github Action to create a .env file with Github Secrets. This is useful when
-you are creating artifacts that need to contain secrets stored in Github
-Secrets. This creates a file with variables that are defined in the Action
-config.
+A Github Action to create an '.env' file with Github Secrets. This is useful
+when you are creating artifacts that contain values stored in Github Secrets.
+This creates a file with variables that are defined in the Action config.
 
 ## Usage
 
 The Action looks for environment variables that start with `envkey_` and creates
-an envfile with them. These are defined in the `with` section of the Action
+an '.env' file with them. These are defined in the `with` section of the Action
 config. Here is an example of it in use:
 
 ```yml
@@ -45,16 +44,16 @@ jobs:
 ## Inputs
 
 In the example above, there are several key/value pairs that will be added to
-the envfile:
+the '.env' file:
 
 | Name                                  | Description                                                                                                                                                              |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `envkey_DEBUG`, `envkey_SOME_API_KEY` | These values can be whatever, and they will be added to the envfile as `DEBUG` and `SOME_API_KEY` .                                                                      |
+| `envkey_DEBUG`, `envkey_SOME_API_KEY` | These values can be whatever, and they will be added to the '.env' file as `DEBUG` and `SOME_API_KEY` .                                                                  |
 | `envkey_SECRET_KEY`                   | This one will use a secret stored in the repository's Github Secrets, and add it to the file as  `SECRET_KEY`                                                            |
 | `directory` (**Optional**)            | This key will set the directory in which you want to create `env` file. **Important: cannot start with `/`. Action will fail if the specified directory doesn't exist.** |
-| `file_name` (**Optional**)            | Set the name of the output envfile. Defaults to `.env`                                                                                                                   |
+| `file_name` (**Optional**)            | Set the name of the output '.env' file. Defaults to `.env`                                                                                                               |
 
-Assuming that the Github Secret that was used is `password123`, the .env file
+Assuming that the Github Secret that was used is `password123`, the '.env' file
 that is created from the config above would contain:
 
 ```text
