@@ -1,16 +1,19 @@
-  name: 'Create .env file'
-  description: 'Github Action to create a .env file with Github Secrets'
-  author: 'Forest Anderson'
-  branding:
-    icon: 'briefcase'
-    color: 'gray-dark'
-  inputs:
-    file_name:
-      description: 'The filename for the envfile'
-      default: '.env'
-    directory:
-      description: 'The directory to put the envfile in'
-      default: ''
-  runs:
-    using: 'docker'
-    image: 'Dockerfile'
+name: "Create .env file"
+description: "Github Action to create a .env file with Github Secrets"
+author: "Forest Anderson"
+branding:
+  icon: "briefcase"
+  color: "gray-dark"
+inputs:
+  file_name:
+    description: "The filename for the envfile"
+    default: ".env"
+  directory:
+    description: "The directory to put the envfile in"
+    default: ""
+  fail_on_empty:
+    description: "Fail if an env key is an empty string"
+    default: "false"
+runs:
+  using: "docker"
+  image: "Dockerfile"
