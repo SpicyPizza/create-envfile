@@ -1,218 +1,207 @@
 name: Test action
 
-on:
-  push:
+on: [ push ]
 
 jobs:
   test-general:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Make envfile
-      uses: ./
-      with:
-        envkey_DEBUG: false
-        envkey_SOME_API_KEY: "123456abcdef"
-        envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        some_other_variable: foobar
-        file_name: .env
+      - name: Make envfile
+        uses: ./
+        with:
+          envkey_DEBUG: false
+          envkey_SOME_API_KEY: "123456abcdef"
+          envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          some_other_variable: foobar
+          file_name: .env
 
-    - name: Verify envfile
-      run: |
-        TEST=$(cat <<-END
-          DEBUG=false
-          SECRET_KEY=password123
-          SOME_API_KEY=123456abcdef
-        END
-        )
-        if [ "$TEST" != "$(cat .env)" ]
-        then
-            echo "ERR"
-        fi
+      - name: Verify envfile
+        run: |
+          TEST=$(cat <<-END
+            DEBUG=false
+            SECRET_KEY=password123
+            SOME_API_KEY=123456abcdef
+          END
+          )
+          if [ "$TEST" != "$(cat .env)" ]
+          then
+              echo "ERR"
+          fi
 
   test-filename:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Make envfile
-      uses: ./
-      with:
-        envkey_DEBUG: false
-        file_name: .other-file
+      - name: Make envfile
+        uses: ./
+        with:
+          envkey_DEBUG: false
+          file_name: .other-file
 
-    - name: Verify envfile
-      run: |
-        TEST=$(cat <<-END
-          DEBUG=false
-        END
-        )
-        if [ "$TEST" != "$(cat .other-file)" ]
-        then
-            echo "ERR"
-        fi
+      - name: Verify envfile
+        run: |
+          TEST=$(cat <<-END
+            DEBUG=false
+          END
+          )
+          if [ "$TEST" != "$(cat .other-file)" ]
+          then
+              echo "ERR"
+          fi
 
   test-relative-path-above:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Make envfile
-      uses: ./
-      with:
-        envkey_DEBUG: false
-        directory: ../
+      - name: Make envfile
+        uses: ./
+        with:
+          envkey_DEBUG: false
+          directory: ../
 
-    - name: Verify envfile
-      run: |
-        TEST=$(cat <<-END
-          DEBUG=false
-        END
-        )
-        if [ "$TEST" != "$(cat ../.env)" ]
-        then
-            echo "ERR"
-        fi
+      - name: Verify envfile
+        run: |
+          TEST=$(cat <<-END
+            DEBUG=false
+          END
+          )
+          if [ "$TEST" != "$(cat ../.env)" ]
+          then
+              echo "ERR"
+          fi
 
   test-relative-path-subdirectory-1:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Create folder
-      run: |
-        mkdir -p subdir
+      - name: Create folder
+        run: |
+          mkdir -p subdir
 
-    - name: Make envfile
-      uses: ./
-      with:
-        envkey_DEBUG: false
-        directory: subdir
+      - name: Make envfile
+        uses: ./
+        with:
+          envkey_DEBUG: false
+          directory: subdir
 
-    - name: Verify envfile
-      run: |
-        TEST=$(cat <<-END
-          DEBUG=false
-        END
-        )
-        if [ "$TEST" != "$(cat subdir/.env)" ]
-        then
-            echo "ERR"
-        fi
+      - name: Verify envfile
+        run: |
+          TEST=$(cat <<-END
+            DEBUG=false
+          END
+          )
+          if [ "$TEST" != "$(cat subdir/.env)" ]
+          then
+              echo "ERR"
+          fi
 
   test-relative-path-subdirectory-2:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Create folder
-      run: |
-        mkdir -p subdir
+      - name: Create folder
+        run: |
+          mkdir -p subdir
 
-    - name: Make envfile
-      uses: ./
-      with:
-        envkey_DEBUG: false
-        directory: ./subdir
+      - name: Make envfile
+        uses: ./
+        with:
+          envkey_DEBUG: false
+          directory: ./subdir
 
-    - name: Verify envfile
-      run: |
-        TEST=$(cat <<-END
-          DEBUG=false
-        END
-        )
-        if [ "$TEST" != "$(cat subdir/.env)" ]
-        then
-            echo "ERR"
-        fi
+      - name: Verify envfile
+        run: |
+          TEST=$(cat <<-END
+            DEBUG=false
+          END
+          )
+          if [ "$TEST" != "$(cat subdir/.env)" ]
+          then
+              echo "ERR"
+          fi
 
   should-fail-test-absolute-path:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Create folder
-      run: |
-        mkdir -p subdir
+      - name: Create folder
+        run: |
+          mkdir -p subdir
 
-    - name: Make envfile
-      uses: ./
-      with:
-        envkey_DEBUG: false
-        directory: /home
-
+      - name: Make envfile
+        uses: ./
+        with:
+          envkey_DEBUG: false
+          directory: /home
 
   should-fail-test-bad-secret:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Create folder
-      run: |
-        mkdir -p subdir
+      - name: Create folder
+        run: |
+          mkdir -p subdir
 
-    - name: Make envfile
-      uses: ./
-      with:
-        fail_on_empty: true
-        envkey_SECRET_KEY: ${{ secrets.NON_EXISTENT_SECRET }}
+      - name: Make envfile
+        uses: ./
+        with:
+          fail_on_empty: true
+          envkey_SECRET_KEY: ${{ secrets.NON_EXISTENT_SECRET }}
 
   # Test empty envkeys
   should-fail-test-empty-envkey:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Create folder
-      run: |
-        mkdir -p subdir
+      - name: Create folder
+        run: |
+          mkdir -p subdir
 
-    - name: Make envfile
-      uses: ./
-      with:
-        envkey_SECRET_KEY: ""
-        fail_on_empty: true
+      - name: Make envfile
+        uses: ./
+        with:
+          envkey_SECRET_KEY: ""
+          fail_on_empty: true
 
   test-empty-envkey-default-option:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Create folder
-      run: |
-        mkdir -p subdir
+      - name: Create folder
+        run: |
+          mkdir -p subdir
 
-    - name: Make envfile
-      uses: ./
-      with:
-        envkey_SECRET_KEY: ""
+      - name: Make envfile
+        uses: ./
+        with:
+          envkey_SECRET_KEY: ""
 
-    - name: Verify envfile
-      run: |
-        TEST=$(cat <<-END
-          SECRET_KEY=
-        END
-        )
-        if [ "$TEST" != "$(cat .env)" ]
-        then
-            echo "ERR"
-        fi
+      - name: Verify envfile
+        run: |
+          TEST=$(cat <<-END
+            SECRET_KEY=
+          END
+          )
+          if [ "$TEST" != "$(cat .env)" ]
+          then
+              echo "ERR"
+          fi
