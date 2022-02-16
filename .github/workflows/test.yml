@@ -170,3 +170,48 @@ jobs:
       uses: ./
       with:
         envkey_SECRET_KEY: ${{ secrets.NON_EXISTENT_SECRET }}
+
+  # Test empty envkeys
+  should-fail-test-empty-envkey:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create folder
+      run: |
+        mkdir -p subdir
+
+    - name: Make envfile
+      uses: ./
+      with:
+        envkey_SECRET_KEY: ""
+        fail_on_empty: true
+
+  test-empty-envkey-default-option:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create folder
+      run: |
+        mkdir -p subdir
+
+    - name: Make envfile
+      uses: ./
+      with:
+        envkey_SECRET_KEY: ""
+
+    - name: Verify envfile
+      run: |
+        TEST=$(cat <<-END
+          SECRET_KEY=
+        END
+        )
+        if [ "$TEST" != "$(cat .env)" ]
+        then
+            echo "ERR"
+        fi

@@ -11,7 +11,7 @@ for key in sorted(env_keys):
         value = os.getenv(key, "")
 
         # If the key is empty, throw an error.
-        if value == "":
+        if value == "" and os.getenv("INPUT_FAIL_ON_EMPTY", "false") == "true":
             raise Exception(f"Empty env key found: {key}")
 
         out_file += "{}={}\n".format(key.split("INPUT_ENVKEY_")[1], value)
