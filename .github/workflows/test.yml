@@ -169,6 +169,7 @@ jobs:
     - name: Make envfile
       uses: ./
       with:
+        fail_on_empty: true
         envkey_SECRET_KEY: ${{ secrets.NON_EXISTENT_SECRET }}
 
   # Test empty envkeys
