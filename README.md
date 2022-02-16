@@ -39,6 +39,7 @@ jobs:
         some_other_variable: foobar
         directory: <directory_name>
         file_name: .env
+        fail_on_empty: false
 ```
 
 ## Inputs
@@ -52,6 +53,7 @@ the '.env' file:
 | `envkey_SECRET_KEY`                   | This one will use a secret stored in the repository's Github Secrets, and add it to the file as  `SECRET_KEY`                                                            |
 | `directory` (**Optional**)            | This key will set the directory in which you want to create `env` file. **Important: cannot start with `/`. Action will fail if the specified directory doesn't exist.** |
 | `file_name` (**Optional**)            | Set the name of the output '.env' file. Defaults to `.env`                                                                                                               |
+| `fail_on_empty` (**Optional**)        | If set to true, the Action will fail if any env key is empty. Default to `false`.                                                                                        |
 
 Assuming that the Github Secret that was used is `password123`, the '.env' file
 that is created from the config above would contain:
