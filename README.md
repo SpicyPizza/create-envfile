@@ -69,7 +69,7 @@ SECRET_KEY=password123
 ### Warnings
 
 When the Action runs, it will show `Warning: Unexpected input(s) ...`. This is
-because Github is expecing all the potential input variables to be defined by
+because Github is expecting all the potential input variables to be defined by
 the Action's definition. You can read more about it in [this
 issue](https://github.com/SpicyPizza/create-envfile/issues/10).
 
