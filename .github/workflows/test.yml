@@ -215,16 +215,20 @@ jobs:
 
       - name: Make envfile
         uses: ./
+        id: make_envfile
         with:
           envkey_SECRET_KEY: ''
           # fail_on_empty: true
         continue-on-error: true
 
       - name: Verify last step failed
-        if: steps.integrationTests.outcome == 'success'
+        env:
+          STEP_OUTPUTS: ${{join(steps.make_envfile.outputs.*, '\n')}}
         run: |
-          echo "Expected last step to fail"
-          exit 1
+          if [ tail -n 1 <<< "$STEP_OUTPUTS" != "Error: Process completed with exit code 1." ]
+          then
+            exit 1
+          fi
 
   test-empty-envkey-default-option:
     runs-on: ubuntu-latest
