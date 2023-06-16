@@ -1,4 +1,5 @@
-name: 'build-test'
+name: 'Test Action'
+
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
@@ -12,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          npm install
+          yarn install
       - run: |
-          npm run all
+          yarn run all
 
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
@@ -219,12 +220,6 @@ jobs:
         with:
           envkey_SECRET_KEY: ''
           fail_on_empty: true
-
-      - name: Verify last step failed
-        if: ${{ failure() }}
-        run: |
-          echo "Expected failure"
-          exit 0
 
   test-empty-envkey-default-option:
     runs-on: ubuntu-latest
