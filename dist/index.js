@@ -48,7 +48,7 @@ async function run() {
         }
         const directory = core.getInput('directory') || '';
         const fileName = core.getInput('file_name') || '.env';
-        let filePath = process.env['GITHUB_WORKSPACE'] || '/github/workspace';
+        let filePath = process.env['GITHUB_WORKSPACE'] || '.';
         if (filePath === '' || filePath === 'None') {
             filePath = '.';
         }
