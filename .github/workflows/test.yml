@@ -40,9 +40,9 @@ jobs:
       - name: Verify envfile
         run: |
           TEST=$(cat <<-END
-            DEBUG=false
-            SECRET_KEY=password123
-            SOME_API_KEY=123456abcdef
+          DEBUG=false
+          SECRET_KEY=password123
+          SOME_API_KEY=123456abcdef
           END
           )
           if [ "$TEST" != "$(cat .env)" ]
@@ -69,7 +69,7 @@ jobs:
       - name: Verify envfile
         run: |
           TEST=$(cat <<-END
-            DEBUG=false
+          DEBUG=false
           END
           )
           if [ "$TEST" != "$(cat .other-file)" ]
@@ -96,7 +96,7 @@ jobs:
       - name: Verify envfile
         run: |
           TEST=$(cat <<-END
-            DEBUG=false
+          DEBUG=false
           END
           )
           if [ "$TEST" != "$(cat ../.env)" ]
@@ -127,7 +127,7 @@ jobs:
       - name: Verify envfile
         run: |
           TEST=$(cat <<-END
-            DEBUG=false
+          DEBUG=false
           END
           )
           if [ "$TEST" != "$(cat subdir/.env)" ]
@@ -158,7 +158,7 @@ jobs:
       - name: Verify envfile
         run: |
           TEST=$(cat <<-END
-            DEBUG=false
+          DEBUG=false
           END
           )
           if [ "$TEST" != "$(cat subdir/.env)" ]
@@ -237,7 +237,7 @@ jobs:
       - name: Verify envfile
         run: |
           TEST=$(cat <<-END
-            SECRET_KEY=
+          SECRET_KEY=
           END
           )
           if [ "$TEST" != "$(cat .env)" ]
