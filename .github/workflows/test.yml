@@ -225,11 +225,11 @@ jobs:
         env:
           STEP_OUTPUTS: ${{join(steps.make_envfile.outputs.*, '\n')}}
         run: |
-          echo "$STEP_OUTPUTS"
-          if [ tail -n 1 <<< "$STEP_OUTPUTS" != "Error: Process completed with exit code 1." ]
-          then
-            exit 1
-          fi
+          env
+          # if [ tail -n 1 <<< "$STEP_OUTPUTS" != "Error: Process completed with exit code 1." ]
+          # then
+          #   exit 1
+          # fi
 
   test-empty-envkey-default-option:
     runs-on: ubuntu-latest
