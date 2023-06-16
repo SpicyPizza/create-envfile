@@ -15,7 +15,7 @@ jobs:
           npm install
       - run: |
           npm run all
-          
+
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +32,7 @@ jobs:
         uses: ./
         with:
           envkey_DEBUG: false
-          envkey_SOME_API_KEY: "123456abcdef"
+          envkey_SOME_API_KEY: '123456abcdef'
           envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
           some_other_variable: foobar
           file_name: .env
@@ -47,7 +47,11 @@ jobs:
           )
           if [ "$TEST" != "$(cat .env)" ]
           then
-              echo "ERR"
+            echo "Actual:"
+            cat .env
+            echo "Expected:"
+            echo "$TEST"
+            exit 1
           fi
 
   test-filename:
@@ -70,7 +74,11 @@ jobs:
           )
           if [ "$TEST" != "$(cat .other-file)" ]
           then
-              echo "ERR"
+            echo "Actual:"
+            cat .other-file
+            echo "Expected:"
+            echo "$TEST"
+            exit 1
           fi
 
   test-relative-path-above:
@@ -93,7 +101,11 @@ jobs:
           )
           if [ "$TEST" != "$(cat ../.env)" ]
           then
-              echo "ERR"
+            echo "Actual:"
+            cat ../.env
+            echo "Expected:"
+            echo "$TEST"
+            exit 1
           fi
 
   test-relative-path-subdirectory-1:
@@ -120,7 +132,11 @@ jobs:
           )
           if [ "$TEST" != "$(cat subdir/.env)" ]
           then
-              echo "ERR"
+            echo "Actual:"
+            cat subdir/.env
+            echo "Expected:"
+            echo "$TEST"
+            exit 1
           fi
 
   test-relative-path-subdirectory-2:
@@ -147,7 +163,11 @@ jobs:
           )
           if [ "$TEST" != "$(cat subdir/.env)" ]
           then
-              echo "ERR"
+            echo "Actual:"
+            cat subdir/.env
+            echo "Expected:"
+            echo "$TEST"
+            exit 1
           fi
 
   should-fail-test-absolute-path:
@@ -196,7 +216,7 @@ jobs:
       - name: Make envfile
         uses: ./
         with:
-          envkey_SECRET_KEY: ""
+          envkey_SECRET_KEY: ''
           fail_on_empty: true
 
   test-empty-envkey-default-option:
@@ -212,7 +232,7 @@ jobs:
       - name: Make envfile
         uses: ./
         with:
-          envkey_SECRET_KEY: ""
+          envkey_SECRET_KEY: ''
 
       - name: Verify envfile
         run: |
@@ -222,5 +242,9 @@ jobs:
           )
           if [ "$TEST" != "$(cat .env)" ]
           then
-              echo "ERR"
+            echo "Actual:"
+            cat .env
+            echo "Expected:"
+            echo "$TEST"
+            exit 1
           fi
