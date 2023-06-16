@@ -6,8 +6,8 @@
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
-    "format": "prettier --write '**/*.ts'",
-    "format-check": "prettier --check '**/*.ts'",
+    "format": "prettier --write \"**/*.ts\"",
+    "format-check": "prettier --check \"**/*.ts\"",
     "lint": "eslint src --ext .ts",
     "package": "ncc build --source-map --license licenses.txt",
     "all": "yarn run build && yarn run format && yarn run lint && yarn run package"
