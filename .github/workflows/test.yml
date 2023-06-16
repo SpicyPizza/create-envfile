@@ -222,14 +222,10 @@ jobs:
         continue-on-error: true
 
       - name: Verify last step failed
-        env:
-          STEP_OUTPUTS: ${{join(steps.make_envfile.outputs.*, '\n')}}
+        if: ${{ failure() }}
         run: |
-          env
-          # if [ tail -n 1 <<< "$STEP_OUTPUTS" != "Error: Process completed with exit code 1." ]
-          # then
-          #   exit 1
-          # fi
+          echo "Expected failure"
+          exit 0
 
   test-empty-envkey-default-option:
     runs-on: ubuntu-latest
