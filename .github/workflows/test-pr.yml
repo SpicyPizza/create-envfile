@@ -45,6 +45,7 @@ jobs:
           file_name: .other-file
 
       - name: Verify envfile
+        shell: bash
         run: |
           TEST=$(cat <<-END
           DEBUG=false
@@ -60,6 +61,7 @@ jobs:
           fi
 
       - name: Cleanup
+        shell: bash
         run: |
           rm .other-file
 
@@ -70,6 +72,7 @@ jobs:
           directory: ../
 
       - name: Verify envfile
+        shell: bash
         run: |
           TEST=$(cat <<-END
           DEBUG=false
@@ -85,10 +88,12 @@ jobs:
           fi
 
       - name: Cleanup
+        shell: bash
         run: |
           rm ../.env
 
       - name: Create folder
+        shell: bash
         run: |
           mkdir -p subdir
 
@@ -99,6 +104,7 @@ jobs:
           directory: subdir
 
       - name: Verify envfile
+        shell: bash
         run: |
           TEST=$(cat <<-END
           DEBUG=false
@@ -114,6 +120,7 @@ jobs:
           fi
 
       - name: Cleanup
+        shell: bash
         run: |
           rm -rf subdir
 
@@ -145,6 +152,7 @@ jobs:
           envkey_SECRET_KEY: ''
 
       - name: Verify envfile
+        shell: bash
         run: |
           TEST=$(cat <<-END
           SECRET_KEY=
@@ -160,5 +168,6 @@ jobs:
           fi
 
       - name: Cleanup
+        shell: bash
         run: |
           rm .env
