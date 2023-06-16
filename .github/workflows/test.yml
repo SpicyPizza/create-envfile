@@ -221,12 +221,10 @@ jobs:
         continue-on-error: true
 
       - name: Verify last step failed
+        if: steps.integrationTests.outcome == 'success'
         run: |
-          if [ $? -eq 0 ]
-          then
-            echo "Expected last step to fail"
-            exit 1
-          fi
+          echo "Expected last step to fail"
+          exit 1
 
   test-empty-envkey-default-option:
     runs-on: ubuntu-latest
