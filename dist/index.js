@@ -35,7 +35,13 @@ const fs = __importStar(__nccwpck_require__(147));
 const path = __importStar(__nccwpck_require__(17));
 async function run() {
     try {
-        const envKeys = Object.keys(process.env).sort((a, b) => a.localeCompare(b));
+        let envKeys;
+        if (core.getInput('sort_keys') === 'true') {
+            envKeys = Object.keys(process.env).sort((a, b) => a.localeCompare(b));
+        }
+        else {
+            envKeys = Object.keys(process.env);
+        }
         let outFile = '';
         for (const key of envKeys) {
             if (key.startsWith('INPUT_ENVKEY_')) {

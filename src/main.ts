@@ -4,7 +4,12 @@ import * as path from 'path'
 
 async function run(): Promise<void> {
   try {
-    const envKeys = Object.keys(process.env).sort((a, b) => a.localeCompare(b))
+    let envKeys
+    if (core.getInput('sort_keys') === 'true') {
+      envKeys = Object.keys(process.env).sort((a, b) => a.localeCompare(b))
+    } else {
+      envKeys = Object.keys(process.env)
+    }
 
     let outFile = ''
 
