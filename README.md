@@ -66,6 +66,30 @@ SOME_API_KEY="123456abcdef"
 SECRET_KEY=password123
 ```
 
+### Multiline Secrets
+
+This Action supports multiline secrets, as described in [the nodejs dotenv
+readme](https://github.com/motdotla/dotenv#multiline-values).
+
+You may have a secret that requres multiple lines, like a private key. You can
+store this in a GitHub Secret, and use it as any other secret in this Action:
+
+```sh
+PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----
+...
+Kh9NV...
+...
+-----END RSA PRIVATE KEY-----"
+```
+
+It will get stored as a single line in the '.env' file. This line will start and
+end with a `"` character, and will contain `\n` characters to represent the
+newlines:
+
+```sh
+PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\nKh9NV...\n-----END RSA PRIVATE KEY-----\n"
+```
+
 ## Potential Issues
 
 ### Warnings
