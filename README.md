@@ -1,4 +1,4 @@
-# Create .Env File Github Action
+# Create .Env File GitHub Action
 
 [![GitHub
 release](https://img.shields.io/github/release/SpicyPizza/create-envfile.svg?style=flat-square)](https://github.com/SpicyPizza/create-envfile/releases/latest)
@@ -8,8 +8,8 @@ marketplace](https://img.shields.io/badge/marketplace-create--env--file-blue?log
 
 ## About
 
-A Github Action to create an '.env' file with Github Secrets. This is useful
-when you are creating artifacts that contain values stored in Github Secrets.
+A GitHub Action to create an '.env' file with GitHub Secrets. This is useful
+when you are creating artifacts that contain values stored in GitHub Secrets.
 This creates a file with variables that are defined in the Action config.
 
 ## Usage
@@ -31,7 +31,7 @@ jobs:
  
     steps:
     - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1.3
+      uses: SpicyPizza/create-envfile@v2.0
       with:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
@@ -51,13 +51,13 @@ the '.env' file:
 | Name                                  | Description                                                                                                                                                              |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `envkey_DEBUG`, `envkey_SOME_API_KEY` | These values can be whatever, and they will be added to the '.env' file as `DEBUG` and `SOME_API_KEY` .                                                                  |
-| `envkey_SECRET_KEY`                   | This one will use a secret stored in the repository's Github Secrets, and add it to the file as  `SECRET_KEY`                                                            |
+| `envkey_SECRET_KEY`                   | This one will use a secret stored in the repository's GitHub Secrets, and add it to the file as  `SECRET_KEY`                                                            |
 | `directory` (**Optional**)            | This key will set the directory in which you want to create `env` file. **Important: cannot start with `/`. Action will fail if the specified directory doesn't exist.** |
 | `file_name` (**Optional**)            | Set the name of the output '.env' file. Defaults to `.env`                                                                                                               |
 | `fail_on_empty` (**Optional**)        | If set to true, the Action will fail if any env key is empty. Default to `false`.                                                                                        |
 | `sort_keys` (**Optional**)            | If set to true, the Action will sort the keys in the output '.env' file. Default to `false`.                                                                             |
 
-Assuming that the Github Secret that was used is `password123`, the '.env' file
+Assuming that the GitHub Secret that was used is `password123`, the '.env' file
 that is created from the config above would contain:
 
 ```text
@@ -71,7 +71,7 @@ SECRET_KEY=password123
 ### Warnings
 
 When the Action runs, it will show `Warning: Unexpected input(s) ...`. This is
-because Github is expecting all the potential input variables to be defined by
+because GitHub is expecting all the potential input variables to be defined by
 the Action's definition. You can read more about it in [this
 issue](https://github.com/SpicyPizza/create-envfile/issues/10).
 

@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Make envfile
+      - name: Test use GitHub Action secret
         uses: ./
         with:
           envkey_DEBUG: false
@@ -45,3 +45,6 @@ jobs:
             echo "$TEST"
             exit 1
           fi
+
+      - name: Cleanup
+        run: rm .env

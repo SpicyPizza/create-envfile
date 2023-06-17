@@ -21,7 +21,19 @@ async function run(): Promise<void> {
           throw new Error(`Empty env key found: ${key}`)
         }
 
-        outFile += `${key.split('INPUT_ENVKEY_')[1]}=${value}\n`
+        // If the value contains newlines, replace them with the string `\n` and
+        // add double quotes around the value.
+        //
+        // Reference from dotenv:
+        // https://github.com/motdotla/dotenv#multiline-values
+        if (value.includes('\n')) {
+          outFile += `${key.split('INPUT_ENVKEY_')[1]}="${value.replace(
+            /\n/g,
+            '\\n'
+          )}"\n`
+        } else {
+          outFile += `${key.split('INPUT_ENVKEY_')[1]}=${value}\n`
+        }
       }
     }
 
