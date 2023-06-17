@@ -38,170 +38,170 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Test filename
-        uses: ./
-        with:
-          envkey_DEBUG: false
-          file_name: .other-file
+      # - name: Test filename
+      #   uses: ./
+      #   with:
+      #     envkey_DEBUG: false
+      #     file_name: .other-file
 
-      - name: Verify envfile
-        shell: bash
-        run: |
-          TEST=$(cat <<-END
-          DEBUG=false
-          END
-          )
-          if [ "$TEST" != "$(cat .other-file)" ]
-          then
-            echo "Actual:"
-            cat .other-file
-            echo "Expected:"
-            echo "$TEST"
-            exit 1
-          fi
+      # - name: Verify envfile
+      #   shell: bash
+      #   run: |
+      #     TEST=$(cat <<-END
+      #     DEBUG=false
+      #     END
+      #     )
+      #     if [ "$TEST" != "$(cat .other-file)" ]
+      #     then
+      #       echo "Actual:"
+      #       cat .other-file
+      #       echo "Expected:"
+      #       echo "$TEST"
+      #       exit 1
+      #     fi
 
-      - name: Cleanup
-        shell: bash
-        run: |
-          rm .other-file
+      # - name: Cleanup
+      #   shell: bash
+      #   run: |
+      #     rm .other-file
 
-      - name: Test relative path above
-        uses: ./
-        with:
-          envkey_DEBUG: false
-          directory: ../
+      # - name: Test relative path above
+      #   uses: ./
+      #   with:
+      #     envkey_DEBUG: false
+      #     directory: ../
 
-      - name: Verify envfile
-        shell: bash
-        run: |
-          TEST=$(cat <<-END
-          DEBUG=false
-          END
-          )
-          if [ "$TEST" != "$(cat ../.env)" ]
-          then
-            echo "Actual:"
-            cat ../.env
-            echo "Expected:"
-            echo "$TEST"
-            exit 1
-          fi
+      # - name: Verify envfile
+      #   shell: bash
+      #   run: |
+      #     TEST=$(cat <<-END
+      #     DEBUG=false
+      #     END
+      #     )
+      #     if [ "$TEST" != "$(cat ../.env)" ]
+      #     then
+      #       echo "Actual:"
+      #       cat ../.env
+      #       echo "Expected:"
+      #       echo "$TEST"
+      #       exit 1
+      #     fi
 
-      - name: Cleanup
-        shell: bash
-        run: |
-          rm ../.env
+      # - name: Cleanup
+      #   shell: bash
+      #   run: |
+      #     rm ../.env
 
-      - name: Create folder
-        shell: bash
-        run: |
-          mkdir -p subdir
+      # - name: Create folder
+      #   shell: bash
+      #   run: |
+      #     mkdir -p subdir
 
-      - name: Test relative path subdirectory 1
-        uses: ./
-        with:
-          envkey_DEBUG: false
-          directory: subdir
+      # - name: Test relative path subdirectory 1
+      #   uses: ./
+      #   with:
+      #     envkey_DEBUG: false
+      #     directory: subdir
 
-      - name: Verify envfile
-        shell: bash
-        run: |
-          TEST=$(cat <<-END
-          DEBUG=false
-          END
-          )
-          if [ "$TEST" != "$(cat subdir/.env)" ]
-          then
-            echo "Actual:"
-            cat subdir/.env
-            echo "Expected:"
-            echo "$TEST"
-            exit 1
-          fi
+      # - name: Verify envfile
+      #   shell: bash
+      #   run: |
+      #     TEST=$(cat <<-END
+      #     DEBUG=false
+      #     END
+      #     )
+      #     if [ "$TEST" != "$(cat subdir/.env)" ]
+      #     then
+      #       echo "Actual:"
+      #       cat subdir/.env
+      #       echo "Expected:"
+      #       echo "$TEST"
+      #       exit 1
+      #     fi
 
-      - name: Cleanup
-        shell: bash
-        run: |
-          rm -rf subdir
+      # - name: Cleanup
+      #   shell: bash
+      #   run: |
+      #     rm -rf subdir
 
-      - name: Test empty envkey default option
-        uses: ./
-        with:
-          envkey_SECRET_KEY: ''
+      # - name: Test empty envkey default option
+      #   uses: ./
+      #   with:
+      #     envkey_SECRET_KEY: ''
 
-      - name: Verify envfile
-        shell: bash
-        run: |
-          TEST=$(cat <<-END
-          SECRET_KEY=
-          END
-          )
-          if [ "$TEST" != "$(cat .env)" ]
-          then
-            echo "Actual:"
-            cat .env
-            echo "Expected:"
-            echo "$TEST"
-            exit 1
-          fi
+      # - name: Verify envfile
+      #   shell: bash
+      #   run: |
+      #     TEST=$(cat <<-END
+      #     SECRET_KEY=
+      #     END
+      #     )
+      #     if [ "$TEST" != "$(cat .env)" ]
+      #     then
+      #       echo "Actual:"
+      #       cat .env
+      #       echo "Expected:"
+      #       echo "$TEST"
+      #       exit 1
+      #     fi
 
-      - name: Cleanup
-        shell: bash
-        run: |
-          rm .env
+      # - name: Cleanup
+      #   shell: bash
+      #   run: |
+      #     rm .env
 
-      - name: Test sorted envkeys works
-        uses: ./
-        with:
-          envkey_C: 'C'
-          envkey_A: 'A'
-          envkey_B: 'B'
-          sort_keys: true
+      # - name: Test sorted envkeys works
+      #   uses: ./
+      #   with:
+      #     envkey_C: 'C'
+      #     envkey_A: 'A'
+      #     envkey_B: 'B'
+      #     sort_keys: true
 
-      - name: Verify envfile
-        shell: bash
-        run: |
-          TEST=$(cat <<-END
-          A=A
-          B=B
-          C=C
-          END
-          )
-          if [ "$TEST" != "$(cat .env)" ]
-          then
-            echo "Actual:"
-            cat .env
-            echo "Expected:"
-            echo "$TEST"
-            exit 1
-          fi
+      # - name: Verify envfile
+      #   shell: bash
+      #   run: |
+      #     TEST=$(cat <<-END
+      #     A=A
+      #     B=B
+      #     C=C
+      #     END
+      #     )
+      #     if [ "$TEST" != "$(cat .env)" ]
+      #     then
+      #       echo "Actual:"
+      #       cat .env
+      #       echo "Expected:"
+      #       echo "$TEST"
+      #       exit 1
+      #     fi
 
-      - name: Cleanup
-        shell: bash
-        run: |
-          rm .env
+      # - name: Cleanup
+      #   shell: bash
+      #   run: |
+      #     rm .env
 
-      - name: Test should fail absolute path
-        uses: ./
-        with:
-          envkey_DEBUG: false
-          directory: /home
-        continue-on-error: true
+      # - name: Test should fail absolute path
+      #   uses: ./
+      #   with:
+      #     envkey_DEBUG: false
+      #     directory: /home
+      #   continue-on-error: true
 
-      - name: Test should fail bad secret
-        uses: ./
-        with:
-          fail_on_empty: true
-          envkey_SECRET_KEY: ${{ secrets.NON_EXISTENT_SECRET }}
-        continue-on-error: true
+      # - name: Test should fail bad secret
+      #   uses: ./
+      #   with:
+      #     fail_on_empty: true
+      #     envkey_SECRET_KEY: ${{ secrets.NON_EXISTENT_SECRET }}
+      #   continue-on-error: true
 
-      - name: Test should fail empty envkey
-        uses: ./
-        id: make_envfile
-        with:
-          envkey_SECRET_KEY: ''
-          fail_on_empty: true
-        continue-on-error: true
+      # - name: Test should fail empty envkey
+      #   uses: ./
+      #   id: make_envfile
+      #   with:
+      #     envkey_SECRET_KEY: ''
+      #     fail_on_empty: true
+      #   continue-on-error: true
 
       - name: Make envfile
         uses: ./

@@ -26,9 +26,9 @@ async function run(): Promise<void> {
         //
         // Reference from dotenv:
         // https://github.com/motdotla/dotenv#multiline-values
+        // Debug the value to base64
+        throw new Error(Buffer.from(value, 'utf8').toString('base64'))
         if (value.includes('\\n')) {
-          // Debug the value to base64
-          throw new Error(Buffer.from(value, 'utf8').toString('base64'))
           outFile += `${key.split('INPUT_ENVKEY_')[1]}="${value.replace(
             /\n/g,
             '\\n'
