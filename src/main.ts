@@ -27,6 +27,9 @@ async function run(): Promise<void> {
         // Reference from dotenv:
         // https://github.com/motdotla/dotenv#multiline-values
         if (value.includes('\n')) {
+          throw new Error(
+            `Multiline values are not supported: ${key}=${value}`
+          )
           outFile += `${key.split('INPUT_ENVKEY_')[1]}="${value.replace(
             /\n/g,
             '\\n'
