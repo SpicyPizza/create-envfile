@@ -33,7 +33,7 @@ async function run(): Promise<void> {
           )}"\n`
           outFile += new_value
           // Print the length of this new value to the log to help debug
-          throw new Error(`New value length: ${new_value.length}`)
+          // throw new Error(`New value length: ${new_value.length}`)
         } else {
           outFile += `${key.split('INPUT_ENVKEY_')[1]}=${value}\n`
         }
