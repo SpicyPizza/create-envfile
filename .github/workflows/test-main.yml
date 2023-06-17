@@ -17,13 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Make envfile
+      - name: Test use GitHub Action secret
         uses: ./
         with:
           envkey_DEBUG: false
           envkey_SOME_API_KEY: '123456abcdef'
-          # We use a variable instead of a secret here so that CI can run
-          # properly on forks.
           envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
           some_other_variable: foobar
           file_name: .env
@@ -45,3 +43,30 @@ jobs:
             echo "$TEST"
             exit 1
           fi
+
+      - name: Cleanup
+        run: rm .env
+
+      - name: Test use GitHub Action multiline secret
+        uses: ./
+        with:
+          envkey_MULTILINE_SECRET: ${{ secrets.MULTILINE_SECRET }}
+
+      - name: Verify envfile
+        shell: bash
+        run: |
+          TEST=$(cat <<-END
+          MULTILINE_SECRET="line 1\nline 2"
+          END
+          )
+          if [ "$TEST" != "$(cat .env)" ]
+          then
+            echo "Actual:"
+            cat .env
+            echo "Expected:"
+            echo "$TEST"
+            exit 1
+          fi
+
+      - name: Cleanup
+        run: rm .env
