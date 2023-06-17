@@ -16,6 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
+          yarn set version berry
           yarn install --frozen-lockfile
       - run: |
           yarn run all

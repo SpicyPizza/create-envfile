@@ -29,7 +29,9 @@ jobs:
           node-version: 16.x
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          yarn set version berry
+          yarn install --frozen-lockfile
 
       - name: Rebuild the dist/ directory
         run: |
