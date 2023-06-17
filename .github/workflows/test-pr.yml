@@ -214,7 +214,7 @@ jobs:
         shell: bash
         run: |
           TEST=$(cat <<-END
-          MULTILINE_SECRET="first line\nsecond line"
+          MULTILINE_SECRET="line 1\nline 2"
           END
           )
           if [ "$TEST" != "$(cat .env)" ]
