@@ -11,7 +11,7 @@ async function run(): Promise<void> {
       envKeys = Object.keys(process.env)
     }
 
-    let outFile = ''
+    const outFile = ''
 
     for (const key of envKeys) {
       if (key.startsWith('INPUT_ENVKEY_')) {
@@ -28,14 +28,14 @@ async function run(): Promise<void> {
         // https://github.com/motdotla/dotenv#multiline-values
         // Debug the value to base64
         throw new Error(Buffer.from(value, 'utf8').toString('base64'))
-        if (value.includes('\\n')) {
-          outFile += `${key.split('INPUT_ENVKEY_')[1]}="${value.replace(
-            /\n/g,
-            '\\n'
-          )}"\n`
-        } else {
-          outFile += `${key.split('INPUT_ENVKEY_')[1]}=${value}\n`
-        }
+        // if (value.includes('\\n')) {
+        //   outFile += `${key.split('INPUT_ENVKEY_')[1]}="${value.replace(
+        //     /\n/g,
+        //     '\\n'
+        //   )}"\n`
+        // } else {
+        //   outFile += `${key.split('INPUT_ENVKEY_')[1]}=${value}\n`
+        // }
       }
     }
 
