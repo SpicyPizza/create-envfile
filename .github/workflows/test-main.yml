@@ -25,6 +25,7 @@ jobs:
           envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
           some_other_variable: foobar
           file_name: .env
+          sort_keys: true
 
       - name: Verify envfile
         shell: bash
