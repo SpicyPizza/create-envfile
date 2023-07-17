@@ -36,7 +36,7 @@
     "eslint-plugin-jest": "^27.2.2",
     "js-yaml": "^4.1.0",
     "prettier": "^2.8.8",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.6"
   },
   "packageManager": "yarn@3.6.0"
 }
