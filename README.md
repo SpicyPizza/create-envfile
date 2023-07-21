@@ -36,6 +36,7 @@ jobs:
         envkey_DEBUG: false
         envkey_SOME_API_KEY: "123456abcdef"
         envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        envkey_VARIABLE: ${{ vars.SOME_ACTION_VARIABLE }}
         some_other_variable: foobar
         directory: <directory_name>
         file_name: .env
