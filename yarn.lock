@@ -199,10 +199,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.4.4":
-  version: 20.4.4
-  resolution: "@types/node@npm:20.4.4"
-  checksum: 43f3c4a8acc38ae753e15a0e79bae0447d255b3742fa87f8e065d7b9d20ecb0e03d6c5b46c00d5d26f4552160381a00255f49205595a8ee48c2423e00263c930
+"@types/node@npm:^20.4.8":
+  version: 20.4.8
+  resolution: "@types/node@npm:20.4.8"
+  checksum: 86a3963c0c7af3410553d1dfa4b018a20b3cb3ab4d8e8ffe27408b6338c5de0374b0bf379bc705da2205b466daa751ccfe062f453ba9bde34fdb0e5163ca6a68
   languageName: node
   linkType: hard
 
@@ -721,7 +721,7 @@ __metadata:
   dependencies:
     "@actions/core": ^1.10.0
     "@tsconfig/node16": ^16.1.0
-    "@types/node": ^20.4.4
+    "@types/node": ^20.4.8
     "@typescript-eslint/parser": ^5.59.2
     "@vercel/ncc": ^0.36.1
     eslint: ^8.45.0
