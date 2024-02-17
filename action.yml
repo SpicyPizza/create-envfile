@@ -18,5 +18,5 @@ inputs:
     description: 'Sort the keys alphabetically'
     default: 'false'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
