@@ -30,7 +30,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          yarn set version berry
           yarn install --frozen-lockfile
 
       - name: Rebuild the dist/ directory
